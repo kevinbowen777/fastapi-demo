@@ -51,6 +51,11 @@ def fetch_recipe(*, recipe_id: int) -> dict:
 def search_recipes(
     keyword: Optional[str] = None, max_results: Optional[int] = 10
 ) -> dict:
+    """
+    Search for recipes based on label keyword
+    """
+    if not keyword:
+        return {"results": RECIPES[:max_results]}
 
 app.include_router(api_router)
 
