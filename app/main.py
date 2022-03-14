@@ -12,3 +12,6 @@ def root() -> dict:
     Root GET
     """
     return {"msg": "Hello, World!"}
+
+
+app.include_router(api_router)
