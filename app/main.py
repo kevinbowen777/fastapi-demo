@@ -37,6 +37,10 @@ def root() -> dict:
 
 
 @api_router.get("/recipe/{recipe_id}", status_code=200)
+def fetch_recipe(*, recipe_id: int) -> dict:
+    """
+    Fetch a single recipe by ID
+    """
 
 app.include_router(api_router)
 
