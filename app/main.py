@@ -2,6 +2,7 @@ from fastapi import FastAPI, APIRouter
 
 from typing import Optional
 
+from app.schemas import RecipeSearchResults, Recipe, RecipeCreate
 
 app = FastAPI(title="Recipe API", openapi_url="/openapi.json")
 
@@ -16,7 +17,7 @@ def root() -> dict:
     return {"msg": "Hello, World!"}
 
 
-@api_router.get("/recipe/{recipe_id}", status_code=200)
+@api_router.get("/recipe/{recipe_id}", status_code=200, response_model=Recipe)
 def fetch_recipe(*, recipe_id: int) -> dict:
     """
     Fetch a single recipe by ID
