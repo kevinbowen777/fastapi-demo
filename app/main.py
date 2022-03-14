@@ -36,6 +36,8 @@ def root() -> dict:
     return {"msg": "Hello, World!"}
 
 
+@api_router.get("/recipe/{recipe_id}", status_code=200)
+
 app.include_router(api_router)
 
 
