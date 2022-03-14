@@ -1,5 +1,7 @@
 from fastapi import FastAPI, APIRouter
 
+from typing import Optional
+
 
 RECIPES = [
     {
@@ -56,6 +58,10 @@ def search_recipes(
     """
     if not keyword:
         return {"results": RECIPES[:max_results]}
+
+    results = filter(lambda recipe: keyword.lower() in recipe["label"].lower(), RECIPES)
+    return {"results": list(results)[:max_results]}
+
 
 app.include_router(api_router)
 
