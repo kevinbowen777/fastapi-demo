@@ -47,6 +47,9 @@ def fetch_recipe(*, recipe_id: int) -> dict:
         return result[0]
 
 
+@api_router.get("/search/", status_code=200)
+
+
 app.include_router(api_router)
 
 
