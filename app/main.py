@@ -20,7 +20,9 @@ def root(request: Request) -> dict:
     """
     Root GET
     """
-    return {"msg": "Hello, World!"}
+    return TEMPLATES.TemplateResponse(
+        "index.html",
+        {"request": request, "recipes": RECIPES},)
 
 
 @api_router.get("/recipe/{recipe_id}", status_code=200, response_model=Recipe)
