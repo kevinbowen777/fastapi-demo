@@ -2,7 +2,7 @@ from fastapi import FastAPI, APIRouter
 
 from typing import Optional
 
-from app.schemas import RecipeSearchResults, Recipe, RecipeCreate
+from app.schemas import Recipe
 
 app = FastAPI(title="Recipe API", openapi_url="/openapi.json")
 
