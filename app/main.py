@@ -1,8 +1,9 @@
-from fastapi import FastAPI, APIRouter
+from fastapi import FastAPI, APIRouter, Query
 
 from typing import Optional
 
-from app.schemas import Recipe
+from app.schemas import RecipeSearchResults, Recipe
+from app.recipe_data import RECIPES
 
 app = FastAPI(title="Recipe API", openapi_url="/openapi.json")
 
@@ -28,9 +29,11 @@ def fetch_recipe(*, recipe_id: int) -> dict:
         return result[0]
 
 
-@api_router.get("/search/", status_code=200)
+@api_router.get("/search/", status_code=200, response_model=RecipeSearchResults)
 def search_recipes(
-    keyword: Optional[str] = None, max_results: Optional[int] = 10
+    *,
+    keyword: Optional[str] = Query(None, min_length=3, example="chicken"),
+    max_results: Optional[int] = 10
 ) -> dict:
     """
     Search for recipes based on label keyword
