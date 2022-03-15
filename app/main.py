@@ -2,8 +2,9 @@ from fastapi import FastAPI, APIRouter, Query
 
 from typing import Optional
 
-from app.schemas import RecipeSearchResults, Recipe
+from app.schemas import RecipeSearchResults, Recipe, RecipeCreate
 from app.recipe_data import RECIPES
+
 
 app = FastAPI(title="Recipe API", openapi_url="/openapi.json")
 
@@ -43,6 +44,23 @@ def search_recipes(
 
     results = filter(lambda recipe: keyword.lower() in recipe["label"].lower(), RECIPES)
     return {"results": list(results)[:max_results]}
+
+
+@api_router.post("/recipe/", status_code=201, response_model=Recipe)
+def create_recipe(*, recipe_in: RecipeCreate) -> dict:
+    """
+    Create a new recipe (in memory only)
+    """
+    new_entry_id = len(RECIPES) + 1
+    recipe_entry = Recipe(
+        id=new_entry_id,
+        label=recipe_in.label,
+        source=recipe_in.source,
+        url=recipe_in.url,
+    )
+    RECIPES.append(recipe_entry.dict())
+
+    return recipe_entry
 
 
 app.include_router(api_router)
