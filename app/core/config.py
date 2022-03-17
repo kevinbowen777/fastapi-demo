@@ -19,3 +19,6 @@ class Settings(BaseSettings):
 
     SQLALCHEMY_DATABASE_URI: Optional[str] = "sqlite:///recipes.db"
     FIRST_SUPERUSER: EmailStr = "kevin.bowen@gmail.com"
+
+    class Config:
+        case_sensitive = True
