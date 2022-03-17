@@ -17,3 +17,5 @@ class Settings(BaseSettings):
             return v
         raise ValueError(v)
 
+    SQLALCHEMY_DATABASE_URI: Optional[str] = "sqlite:///recipes.db"
+    FIRST_SUPERUSER: EmailStr = "kevin.bowen@gmail.com"
