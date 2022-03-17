@@ -1,7 +1,8 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-SQLALCHEMY_DATABASE_URI = "sqlite:///example.db"
+SQLALCHEMY_DATABASE_URI = "sqlite:///recipes.db"
+# SQLALCHEMY_DATABASE_URI = "sqlite:///example.db"
 
 
 engine = create_engine(
