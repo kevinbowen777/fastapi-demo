@@ -13,7 +13,7 @@ BASE_PATH = Path(__file__).resolve().parent
 TEMPLATES = Jinja2Templates(directory=str(BASE_PATH / "templates"))
 
 root_router = APIRouter()
-app = FastAPI(title="Recipe API")
+app = FastAPI(title="Recipe API", openapi_url="/openapi.json")
 
 
 @root_router.get("/", status_code=200)
