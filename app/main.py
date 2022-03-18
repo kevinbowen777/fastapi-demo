@@ -12,12 +12,11 @@ from app.core.config import settings
 BASE_PATH = Path(__file__).resolve().parent
 TEMPLATES = Jinja2Templates(directory=str(BASE_PATH / "templates"))
 
-
 root_router = APIRouter()
 app = FastAPI(title="Recipe API")
 
 
-@api_router.get("/", status_code=200)
+@root_router.get("/", status_code=200)
 def root(
     request: Request,
     db: Session = Depends(deps.get_db),
