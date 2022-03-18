@@ -70,6 +70,15 @@ async def get_reddit_top_async(subreddit: str) -> list:
             headers={"User-agent": "recipe bot 0.1"},
         )
 
+    subreddit_recipes = response.json()
+    subreddit_data = []
+    for entry in subreddit_recipes["data"]["children"]:
+        score = entry["data"]["score"]
+        title = entry["data"]["title"]
+        link = entry["data"]["url"]
+        subreddit_data.append(f"{str(score)}: {title} ({link})")
+    return subreddit_data
+
 
 def get_reddit_top(subreddit: str) -> list:
     response = httpx.get(
