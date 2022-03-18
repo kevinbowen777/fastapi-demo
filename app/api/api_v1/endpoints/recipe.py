@@ -63,6 +63,14 @@ def create_recipe(
     return recipe
 
 
+async def get_reddit_top_async(subreddit: str) -> list:
+    async with httpx.AsyncClient() as client:
+        response = await client.get(
+            f"https://www.reddit.com/r/{subreddit}/top.json?sort=top&t=day&limit=5",
+            headers={"User-agent": "recipe bot 0.1"},
+        )
+
+
 def get_reddit_top(subreddit: str) -> list:
     response = httpx.get(
         f"https://www.reddit.com/r/{subreddit}/top.json?sort=top&t=day&limit=5",
@@ -70,7 +78,7 @@ def get_reddit_top(subreddit: str) -> list:
     )
     subreddit_recipes = response.json()
     subreddit_data= []
-    for entry in subredit_recipes["data"]["children"]:
+    for entry in subreddit_recipes["data"]["children"]:
         score = entry["data"]["score"]
         title = entry["data"]["title"]
         link = entry["data"]["url"]
