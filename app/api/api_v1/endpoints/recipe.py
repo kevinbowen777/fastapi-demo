@@ -76,3 +76,8 @@ def get_reddit_top(subreddit: str) -> list:
         link = entry["data"]["url"]
         subreddit_data.append(f"{str(score)}: {title} ({link})")
     return subreddit_data
+
+
+@router.get("/ideas/")
+def fetch_ideas() -> dict:
+    return {key: get_reddit_top(subreddit=key) for key in RECIPE_SUBREDDITS}
