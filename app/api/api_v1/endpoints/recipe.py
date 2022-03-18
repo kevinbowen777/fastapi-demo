@@ -61,3 +61,18 @@ def create_recipe(
     recipe = crud.recipe.create(db=db, obj_in=recipe_in)
 
     return recipe
+
+
+def get_reddit_top(subreddit: str) -> list:
+    response = httpx.get(
+        f"https://www.reddit.com/r/{subreddit}/top.json?sort=top&t=day&limit=5",
+        headers={"User-agent": "recipebot 0.1"},
+    )
+    subreddit_recipes = response.json()
+    subreddit_data= []
+    for entry in subredit_recipes["data"]["children"]:
+        score = entry["data"]["score"]
+        title = entry["data"]["title"]
+        link = entry["data"]["url"]
+        subreddit_data.append(f"{str(score)}: {title} ({link})")
+    return subreddit_data
