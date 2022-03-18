@@ -36,7 +36,7 @@ def fetch_recipe(
 @router.get("/search/", status_code=200, response_model=RecipeSearchResults)
 def search_recipes(
     *,
-    keyword: Optional[str] = Query(None, min_length=3, example="chicken"),
+    keyword: str = Query(None, min_length=3, example="chicken"),
     max_results: Optional[int] = 10,
     db: Session = Depends(deps.get_db),
 ) -> dict:
@@ -44,11 +44,9 @@ def search_recipes(
     Search for recipes based on label keyword
     """
     recipes = crud.recipe.get_multi(db=db, limit=max_results)
-    if not keyword:
-        return {"results": recipes}
-
     results = filter(lambda recipe: keyword.lower() in recipe.label.lower(), recipes)
-    return {"results": list(results)[:max_results]}
+
+    return {"results": list(results)}
 
 
 @router.post("/", status_code=201, response_model=Recipe)
@@ -83,10 +81,10 @@ async def get_reddit_top_async(subreddit: str) -> list:
 def get_reddit_top(subreddit: str) -> list:
     response = httpx.get(
         f"https://www.reddit.com/r/{subreddit}/top.json?sort=top&t=day&limit=5",
-        headers={"User-agent": "recipebot 0.1"},
+        headers={"User-agent": "recipe bot 0.1"},
     )
     subreddit_recipes = response.json()
-    subreddit_data= []
+    subreddit_data = []
     for entry in subreddit_recipes["data"]["children"]:
         score = entry["data"]["score"]
         title = entry["data"]["title"]
