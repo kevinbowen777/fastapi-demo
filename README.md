@@ -1,4 +1,4 @@
-## Recipes Demo - A basic demonstration of FastAPI functionality 
+## Recipes Demo - demonstration of FastAPI functionality 
 
 
 
@@ -20,13 +20,6 @@
  7. Run the FastAPI server via poetry `poetry run ./run.sh`
  8. Open http://localhost:8001/
 
-### Live Demo on Linode(not available 24/7): 
- - [Homepage](http://23.239.3.242/)
- - [API page](http://23.239.3.242/docs)
-
-### Docker Container Image:
-
- - TBD
 
 ---
 ## Screenshots
@@ -40,6 +33,16 @@
 ---
 [![License](https://img.shields.io/badge/license-MIT-green)](https://github.com/kevinbowen777/recipes/blob/master/LICENSE)
 ---
+### Live Demo on Linode(not available 24/7): 
+ - [Homepage](http://23.239.3.242/)
+ - [API page](http://23.239.3.242/docs)
+
+### Docker Container Image:
+
+ - TBD
+
+---
+
 ### Reporting Bugs                                                              
                                                                                  
    Visit the [Issues page](https://github.com/kevinbowen777/recipes/issues)
