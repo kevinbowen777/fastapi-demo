@@ -28,11 +28,20 @@ def login(
     if not user:
         raise HTTPException(status_code=400, detail="Incorrect username or password")
 
-    return(
+    return {
         "access_token": create_access_token(sub=user.id),
         "token_type": "bearer",
     }
 
+
+@router.get("/me", response_model=schemas.User)
+def read_users_me(current_user: User = Depends(deps.get_current_user)):
+    """
+    Fetch the current logged in user.
+    """
+
+    user = current_user
+    return user
 
 
 @router.post("/signup", response_model=schemas.User, status_code=201)
