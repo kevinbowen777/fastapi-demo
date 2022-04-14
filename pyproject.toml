@@ -1,6 +1,6 @@
 [tool.black]
-line=length = 79
-include =
+line-length = 79
+# include =
 exclude = '''
 /(
     \.git
@@ -12,6 +12,12 @@ exclude = '''
   | ^.*\b(migrations)\b.*$
  )/
 '''
+
+[isort]
+profile = black
+multi_line_output = 3
+skip = .gitignore
+extend_skip = .md,.json
 
 [tool.poetry]
 name = "app"
