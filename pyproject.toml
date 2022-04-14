@@ -1,3 +1,18 @@
+[tool.black]
+line=length = 79
+include =
+exclude = '''
+/(
+    \.git
+  | __pycache__
+  | .pytest_cache
+  | .venv
+  | build
+  | dist
+  | ^.*\b(migrations)\b.*$
+ )/
+'''
+
 [tool.poetry]
 name = "app"
 version = "0.0.3"
