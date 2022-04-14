@@ -4,8 +4,9 @@ from unittest.mock import MagicMock
 import pytest
 from fastapi.testclient import TestClient
 
-from app.main import app
 from app.api import deps
+from app.main import app
+
 
 async def override_reddit_dependency() -> MagicMock:
     mock = MagicMock()

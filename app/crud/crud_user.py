@@ -2,10 +2,10 @@ from typing import Any, Dict, Optional, Union
 
 from sqlalchemy.orm import Session
 
+from app.core.security import get_password_hash
 from app.crud.base import CRUDBase
 from app.models.user import User
 from app.schemas.user import UserCreate, UserUpdate
-from app.core.security import get_password_hash
 
 
 class CRUDUser(CRUDBase[User, UserCreate, UserUpdate]):
@@ -22,9 +22,7 @@ class CRUDUser(CRUDBase[User, UserCreate, UserUpdate]):
 
         return db_obj
 
-    def update(
-        self, db: Session, *, db_obj: User, obj_in: Union[UserUpdate, Dict[str, Any]]
-    ) -> User:
+    def update(self, db: Session, *, db_obj: User, obj_in: Union[UserUpdate, Dict[str, Any]]) -> User:
         if isinstance(obj_in, dict):
             update_data = obj_in
         else:

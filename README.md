@@ -1,4 +1,4 @@
-## Recipes Demo - demonstration of FastAPI functionality 
+## Recipes Demo - demonstration of FastAPI functionality
 
 
 
@@ -6,7 +6,7 @@
  - Create, search and update recipes with site links via an API interface
  - Authenticate users and restrict authorization to certain endpoints
  - Create users and superusers
- - 
+ -
 
 
 ## Installation
@@ -33,7 +33,7 @@
 ---
 [![License](https://img.shields.io/badge/license-MIT-green)](https://github.com/kevinbowen777/recipes/blob/master/LICENSE)
 ---
-### Live Demo on Linode(not available 24/7): 
+### Live Demo on Linode(not available 24/7):
  - [Homepage](http://23.239.3.242/)
  - [API page](http://23.239.3.242/docs)
 
@@ -43,7 +43,7 @@
 
 ---
 
-### Reporting Bugs                                                              
-                                                                                 
+### Reporting Bugs
+
    Visit the [Issues page](https://github.com/kevinbowen777/recipes/issues)
       to view currently open bug reports or open a new issue.

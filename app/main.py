@@ -1,7 +1,7 @@
 import time
 from pathlib import Path
 
-from fastapi import FastAPI, APIRouter, Request, Depends
+from fastapi import APIRouter, Depends, FastAPI, Request
 from fastapi.templating import Jinja2Templates
 from sqlalchemy.orm import Session
 

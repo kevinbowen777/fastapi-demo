@@ -1,16 +1,16 @@
 from typing import Generator, Optional
 
 from fastapi import Depends, HTTPException, status
-from jose import jwt, JWTError
+from jose import JWTError, jwt
 from pydantic import BaseModel
 from sqlalchemy.orm.session import Session
 
+from app import crud
+from app.clients.reddit import RedditClient
 from app.core.auth import oauth2_scheme
 from app.core.config import settings
 from app.db.session import SessionLocal
 from app.models.user import User
-from app.clients.reddit import RedditClient
-from app import crud
 
 
 class TokenData(BaseModel):
@@ -30,9 +30,7 @@ def get_reddit_client() -> RedditClient:
     return RedditClient()
 
 
-async def get_current_user(
-    db: Session = Depends(get_db), token: str = Depends(oauth2_scheme)
-) -> User:
+async def get_current_user(db: Session = Depends(get_db), token: str = Depends(oauth2_scheme)) -> User:
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail="Could not validate credentials",
@@ -62,7 +60,5 @@ def get_current_active_superuser(
     current_user: User = Depends(get_current_user),
 ) -> User:
     if not crud.user.is_superuser(current_user):
-        raise HTTPException(
-            status_code=400, detail="The user doesn't have enough privileges"
-        )
+        raise HTTPException(status_code=400, detail="The user doesn't have enough privileges")
     return current_user

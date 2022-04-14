@@ -1,18 +1,15 @@
-from typing import Optional, MutableMapping, List, Union
 from datetime import datetime, timedelta
+from typing import List, MutableMapping, Optional, Union
 
 from fastapi.security import OAuth2PasswordBearer
-from sqlalchemy.orm.session import Session
 from jose import jwt
+from sqlalchemy.orm.session import Session
 
-from app.models.user import User
 from app.core.config import settings
 from app.core.security import verify_password
+from app.models.user import User
 
-
-JWTPayloadMapping = MutableMapping[
-    str, Union[datetime, bool, str, List[str], List[int]]
-]
+JWTPayloadMapping = MutableMapping[str, Union[datetime, bool, str, List[str], List[int]]]
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl=f"{settings.API_V1_STR}/auth/login")
 

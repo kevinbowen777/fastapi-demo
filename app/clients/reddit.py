@@ -1,6 +1,6 @@
 import typing as t
 
-from httpx import Client, Response, HTTPError
+from httpx import Client, HTTPError, Response
 
 
 class RedditClientError(Exception):
@@ -16,18 +16,12 @@ class RedditClient:
 
     def __init__(self) -> None:
         self.session = Client()
-        self.session.headers.update(
-            {"Content-Type": "application/json", "User-agent": "recipe bot 0.1"}
-        )
+        self.session.headers.update({"Content-Type": "application/json", "User-agent": "recipe bot 0.1"})
 
-    def _perform_request(  # type: ignore
-        self, method: str, path: str, *args, **kwargs
-    ) -> Response:
+    def _perform_request(self, method: str, path: str, *args, **kwargs) -> Response:  # type: ignore
         res = None
         try:
-            res = getattr(self.session, method)(
-                f"{self.base_url}{path}", *args, **kwargs
-            )
+            res = getattr(self.session, method)(f"{self.base_url}{path}", *args, **kwargs)
             res.raise_for_status()
         except HTTPError:
             raise self.base_error(
