@@ -18,7 +18,9 @@
  5. `poetry install`
  6. Run the DB migrations via poetry `poetry run ./prestart.sh` (only required once)
  7. Run the FastAPI server via poetry `poetry run ./run.sh`
- 8. Open http://localhost:8001/
+ 8. URLs:
+  - http://localhost:8001/
+  - http://127.0.0.1:8001/docs - SwaggerUI
 
 
 ---
