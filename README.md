@@ -1,6 +1,14 @@
-## Recipes Demo - demonstration of FastAPI functionality
+## Recipes Demo
 
+<div align="center">
 
+  [![Status](https://img.shields.io/badge/status-active-success.svg)]()
+  [![GitHub Issues](https://img.shields.io/github/issues/kevinbowen777/recipes.svg)](https://github.com/kevinbowen777/recipes/issues)
+  [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
+
+</div>
+
+- demonstration of FastAPI functionality
 
 ## Features
  - Create, search and update recipes with site links via an API interface
