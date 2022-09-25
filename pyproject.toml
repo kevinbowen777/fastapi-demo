@@ -22,10 +22,11 @@ extend_skip = ["*.md", "*.json"]
 line-length = 119
 
 [tool.poetry]
-name = "app"
-version = "0.0.3"
-description = "Recipes"
-authors = ["kevinbowen"]
+name = "recipes"
+version = "0.1.0"
+description = "A recipe API built with FastAPI"
+authors = ["Kevin Bowen <kevin.bowen@gmail.com>"]
+license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.8"
