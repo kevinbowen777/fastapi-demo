@@ -35,10 +35,10 @@
 ## Screenshots
 
 ### Homepage
-![Homepage](https://github.com/kevinbowen777/recipes/blob/master/images/recipes_homepage.png)
+![Homepage](images/recipes_homepage.png)
 
 ### API page
-![API page](https://github.com/kevinbowen777/recipes/blob/master/images/recipes_api_page.png)
+![API page](images/recipes_api_page.png)
 
 ---
 [![License](https://img.shields.io/badge/license-MIT-green)](https://github.com/kevinbowen777/recipes/blob/master/LICENSE)
